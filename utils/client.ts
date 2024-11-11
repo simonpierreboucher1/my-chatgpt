@@ -30,7 +30,7 @@ export function getSummary(uid) {
     localStorage.getItem(uid) === null ||
     localStorage.getItem(uid) === "[]"
   ) {
-    return "空白对话";
+    return "Empty conversation";
   } else {
     return (
       JSON.parse(localStorage.getItem(uid))[0].content.substr(0, 20) + "..."
