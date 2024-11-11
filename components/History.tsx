@@ -1,5 +1,3 @@
-"use client";
-
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import {
@@ -35,9 +33,9 @@ export default function History() {
         history.push({ index, messages });
       }
       await wrappedWriteClipboard(JSON.stringify(history));
-      alert(`导出成功：共${indices.length}条记录`);
+      alert(`Export successful: ${indices.length} records in total`);
     } catch (e) {
-      alert(`导出失败：${e}`);
+      alert(`Export failed: ${e}`);
     }
   }
 
@@ -59,15 +57,15 @@ export default function History() {
       localStorage.setItem("my-chatgpt-indices", JSON.stringify(indices));
       dispatch({ type: "import", indices });
       alert(
-        `导入成功：共${history.length}条记录，导入${added}条${
+        `Import successful: ${history.length} records in total, ${added} records imported${
           history.length === added
             ? ""
-            : `，${history.length - added}条重复记录未导入`
+            : `, ${history.length - added} duplicate records not imported`
         }`
       );
     } catch (e) {
       if (historyStr !== null) {
-        alert(`导入失败：${e}`);
+        alert(`Import failed: ${e}`);
       }
     }
   }
@@ -98,7 +96,7 @@ export default function History() {
             className="mr-4 h-6 w-6 flex-shrink-0 text-indigo-700 dark:text-indigo-400"
             aria-hidden="true"
           />
-          创建新对话
+          Create New Conversation
         </button>
         {state.indices
           .slice()
@@ -111,7 +109,7 @@ export default function History() {
       <div className="basis-30 flex w-full shrink-0 grow-0 items-center justify-center">
         <button
           className="flex grow items-center justify-center rounded-md p-2 text-indigo-300 hover:bg-indigo-600"
-          title="导出全部聊天记录到剪贴板"
+          title="Export all chat history to clipboard"
           onClick={exportHistory}
         >
           <ArrowUpOnSquareIcon
@@ -121,7 +119,7 @@ export default function History() {
         </button>
         <button
           className="flex grow items-center justify-center rounded-md p-2 text-indigo-300 hover:bg-indigo-600"
-          title="导入从其他地方导出的聊天记录"
+          title="Import chat history from another source"
           onClick={() => setImportPromptOpen(true)}
         >
           <ArrowDownOnSquareIcon
@@ -131,7 +129,7 @@ export default function History() {
         </button>
         <button
           className="flex grow items-center justify-center rounded-md p-2 text-indigo-300 hover:bg-indigo-600"
-          title="清空全部聊天记录"
+          title="Clear all chat history"
           onClick={() => {
             setDeleteConfirmOpen(true);
           }}
@@ -186,11 +184,11 @@ export default function History() {
                           as="h3"
                           className="text-base font-semibold leading-6 text-slate-900"
                         >
-                          清空聊天记录
+                          Clear Chat History
                         </Dialog.Title>
                         <div className="mt-2">
                           <p className="text-sm text-slate-500">
-                            你确定要删除全部聊天记录吗？
+                            Are you sure you want to delete all chat history?
                           </p>
                         </div>
                       </div>
@@ -206,7 +204,7 @@ export default function History() {
                         setDeleteConfirmOpen(false);
                       }}
                     >
-                      确认删除
+                      Confirm Delete
                     </button>
                     <button
                       type="button"
@@ -214,7 +212,7 @@ export default function History() {
                       onClick={() => setDeleteConfirmOpen(false)}
                       ref={cancelButtonRef}
                     >
-                      取消
+                      Cancel
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -268,7 +266,7 @@ export default function History() {
                           as="h3"
                           className="text-base font-semibold leading-6 text-slate-900"
                         >
-                          导入聊天记录
+                          Import Chat History
                         </Dialog.Title>
                         <div className="mt-2">
                           <textarea
@@ -292,7 +290,7 @@ export default function History() {
                       }}
                       ref={submitButtonRef}
                     >
-                      导入
+                      Import
                     </button>
                     <button
                       type="button"
@@ -302,7 +300,7 @@ export default function History() {
                         setImportedHistory("");
                       }}
                     >
-                      取消
+                      Cancel
                     </button>
                   </div>
                 </Dialog.Panel>
