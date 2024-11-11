@@ -54,7 +54,7 @@ export default function ChatPage() {
 
   async function handleSubmit() {
     if (input.trim().length === 0) {
-      alert("输入为空");
+      alert("Input is empty");
       return;
     }
 
@@ -158,7 +158,7 @@ export default function ChatPage() {
       )
       .join("\n");
     await wrappedWriteClipboard(historyText);
-    alert("导出成功");
+    alert("Export successful");
   }
 
   async function onSubmit(event) {
@@ -201,7 +201,7 @@ export default function ChatPage() {
           <textarea
             rows={3}
             name="input"
-            placeholder="在这里输入（回车提交，Shift+回车换行）"
+            placeholder="Enter here (press Enter to submit, Shift+Enter to add a new line)"
             value={input}
             className="h-full w-full rounded-md border-2 border-double border-slate-400 bg-indigo-200 dark:bg-slate-600 md:basis-[7/8]"
             onChange={(e) => setInput(e.target.value)}
@@ -212,7 +212,7 @@ export default function ChatPage() {
             <Button
               onClick={onSubmit}
               className="flex items-center justify-center text-indigo-300 disabled:cursor-not-allowed hover:text-indigo-600 disabled:hover:text-indigo-300 dark:text-slate-400 dark:hover:text-slate-100 dark:disabled:hover:text-slate-400"
-              title="将当前输入的内容发送给ChatGPT"
+              title="Send current input to ChatGPT"
               disabled={submitDisabled}
             >
               {submitDisabled ? (
@@ -225,7 +225,7 @@ export default function ChatPage() {
               <Button
                 className="absolute bottom-[70vh] right-5"
                 onClick={scrollUp}
-                title="滚动到顶部"
+                title="Scroll to top"
               >
                 <ChevronDoubleUpIcon
                   className="h-6 text-indigo-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-slate-100"
@@ -237,7 +237,7 @@ export default function ChatPage() {
               <Button
                 className="absolute bottom-[30vh] right-5"
                 onClick={scrollDown}
-                title="滚动到底部"
+                title="Scroll to bottom"
               >
                 <ChevronDoubleDownIcon
                   className="h-6 text-indigo-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-slate-100"
@@ -247,7 +247,7 @@ export default function ChatPage() {
             ) : null}
             <Button
               onClick={handleExport}
-              title="将当前对话的完整内容复制到剪贴板"
+              title="Copy the entire conversation to clipboard"
             >
               <ClipboardDocumentIcon
                 className="h-6 text-indigo-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-slate-100"
@@ -261,7 +261,7 @@ export default function ChatPage() {
                 router.push(`/chats/${newId}`);
               }}
               className="lg:hidden"
-              title="开始一个新对话（当前对话将被自动保存）"
+              title="Start a new conversation (the current conversation will be automatically saved)"
             >
               <ChatBubbleLeftRightIcon
                 className="h-6 text-indigo-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-slate-100"
