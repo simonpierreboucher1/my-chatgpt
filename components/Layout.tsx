@@ -1,5 +1,3 @@
-"use client";
-
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3BottomLeftIcon,
@@ -157,7 +155,7 @@ export default function Layout(props: { children?: React.ReactNode }) {
 
             <Menu as="div" className="relative ml-3 flex">
               <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm dark:bg-slate-800">
-                <span className="sr-only">设置</span>
+                <span className="sr-only">Settings</span>
                 <Cog8ToothIcon
                   className="h-6 text-indigo-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-slate-100"
                   aria-hidden="true"
@@ -178,8 +176,8 @@ export default function Layout(props: { children?: React.ReactNode }) {
                       htmlFor="temperature-range"
                       className="mb-2 block text-sm font-medium text-slate-900 dark:text-white"
                     >
-                      <span title="模型温度会影响结果的随机性，取值范围为0.0到2.0（但超过1.2时回答基本不可用）。数值越小，模型越确定；数值越大，模型越随机。">
-                        模型温度：{state.temperature.toFixed(2)}
+                      <span title="Model temperature affects the randomness of the results, ranging from 0.0 to 2.0 (but results are basically unusable above 1.2). The smaller the value, the more confident the model; the larger the value, the more random the model.">
+                        Model Temperature: {state.temperature.toFixed(2)}
                       </span>
                     </label>
                     <input
